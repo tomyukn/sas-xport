@@ -57,7 +57,7 @@ class SasFormat(NamedTuple):
     def __str__(self) -> str:
         name = as_str(self.name).strip()
         w = as_int(self.length)
-        d = as_int(self.justify) if self.justify is not None else 0
+        d = as_int(self.decimals)
 
         if name.strip() == "" and w == 0:
             return ""
@@ -108,8 +108,8 @@ class Namestr:
         return self._format
 
     @property
-    def informat(self) -> str:
-        return str(self._informat)
+    def informat(self) -> SasFormat:
+        return self._informat
 
     @property
     def position(self) -> int:
